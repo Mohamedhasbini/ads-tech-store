@@ -1398,8 +1398,19 @@ function jvHandoff(){var s=jvSynth();var wa='https://wa.me/'+WA+'?text='+encodeU
   var sd = document.getElementById('search-results');
   if(!si||!sd) return;
   var timer;
-  function hl(t,q){var re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');return t.replace(re,'<mark>$1</mark>');}
-  si.addEventListener('input',function(){
+  function esc(s){return (s==null?'':''+s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function hl(t,q){
+    var words=q.split(/\s+/).filter(function(w){return w.length>=2;});
+    if(!words.length) return esc(t);
+    var re=new RegExp('('+words.map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}).join('|')+')','gi');
+    return esc(t).replace(re,'<mark>$1</mark>');
+  }
+  function imgSrc(img){
+    if(!img) return '';
+    if(/^https?:\/\//.test(img)||img[0]==='/') return img;
+    return 'https://mohamedhasbini.github.io/ads-tech-store/'+img;
+  }
+  function doSearch(){
     clearTimeout(timer);
     var q=si.value.trim();
     if(q.length<2){sd.hidden=true;return;}
@@ -1408,18 +1419,37 @@ function jvHandoff(){var s=jvSynth();var wa='https://wa.me/'+WA+'?text='+encodeU
         .then(function(r){return r.json();})
         .then(function(d){
           var items=(d.products||[]);
-          if(!items.length){sd.innerHTML='<div style="padding:14px;font-size:13px;color:var(--fg3);">No results</div>';sd.hidden=false;return;}
+          if(!items.length){sd.innerHTML='<div style="padding:14px;font-size:13px;color:var(--fg3);">No results for "'+esc(q)+'"</div>';sd.hidden=false;return;}
           sd.innerHTML=items.map(function(p){
-            var src=p.img?((/^https?:\/\//.test(p.img)||p.img[0]==='/')?p.img:'https://mohamedhasbini.github.io/ads-tech-store/'+p.img):'';
-            return '<a href="#" onclick="go(\'shop\');document.getElementById(\'global-search\').value=\'\';document.getElementById(\'search-results\').hidden=true;return false;">'+
-              (src?'<img src="'+src+'" alt="">':'')+
-              '<div><strong>'+hl(p.name,q)+'</strong><br><span style="font-size:11px;color:var(--fg3);">'+p.brand+' · '+p.category+'</span></div></a>';
-          }).join('');
+            var src=imgSrc(p.img);
+            var specs=p.specs?('<div style="font-family:var(--mono);font-size:10px;color:var(--fg3);margin-top:2px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;">'+hl(p.specs,q)+'</div>'):'';
+            return '<a href="#" onclick="searchNav(\''+esc(p.category)+'\');return false;" style="display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--fg);border-bottom:1px solid var(--line);">'+
+              (src?'<img src="'+esc(src)+'" alt="" style="width:44px;height:44px;object-fit:contain;border-radius:4px;background:var(--panel);flex-shrink:0;">':'')+
+              '<div style="min-width:0;flex:1;"><strong style="display:block;font-size:13px;line-height:1.3;">'+hl(p.brand+' '+p.name,q)+'</strong>'+
+              '<span style="font-size:11px;color:var(--fg3);">'+esc(p.category)+'</span>'+
+              specs+'</div></a>';
+          }).join('')+
+          '<div style="padding:8px 14px;text-align:center;"><a href="#" onclick="searchNav(\'all\');return false;" style="font-family:var(--mono);font-size:11px;color:var(--signal);letter-spacing:.04em;">View all '+items.length+' results in shop</a></div>';
           sd.hidden=false;
         }).catch(function(){sd.hidden=true;});
-    },250);
-  });
+    },200);
+  }
+  si.addEventListener('input',doSearch);
+  si.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();searchNav('all');}});
+  si.addEventListener('focus',function(){if(si.value.trim().length>=2) doSearch();});
   document.addEventListener('click',function(e){if(!si.contains(e.target)&&!sd.contains(e.target))sd.hidden=true;});
+  window.searchNav=function(cat){
+    sd.hidden=true;
+    go('shop');
+    if(cat!=='all'){
+      setTimeout(function(){
+        var tabs=[].slice.call(document.querySelectorAll('.tab'));
+        var hit=tabs.filter(function(t){var a=t.getAttribute('onclick')||'';return a.indexOf("'"+cat+"'")>-1;})[0];
+        if(hit) hit.click();
+      },100);
+    }
+    si.value='';
+  };
 })();
 </script>
 <!-- Data-driven catalog (quote model) - renders products from the admin-managed backend -->
