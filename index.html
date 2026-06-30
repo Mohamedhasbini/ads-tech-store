@@ -45,6 +45,7 @@
   }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cart.css">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -95,6 +96,8 @@
     .n-shop-btn:hover{background:transparent!important;color:var(--signal)!important}
     .n-corp-btn{background:#10b981!important;color:#fff!important;border-radius:6px!important;padding:7px 14px!important;border:1px solid #10b981!important}
     .n-corp-btn:hover{background:transparent!important;color:#10b981!important}
+    .n-portal-btn{background:var(--fg)!important;color:#fff!important;border-radius:6px!important;padding:7px 14px!important;border:1px solid var(--fg)!important}
+    .n-portal-btn:hover{background:transparent!important;color:var(--fg)!important}
     .n-search{position:relative;flex:0 1 280px}
     .n-search input{width:100%;padding:7px 12px;border:1px solid var(--line);border-radius:6px;font-size:12px;font-family:var(--font);background:var(--panel);color:var(--fg);outline:none;transition:var(--t)}
     .n-search input:focus{border-color:var(--signal);background:#fff}
@@ -356,6 +359,7 @@
       <a href="#" onclick="go('home')">Home</a>
       <a href="#" onclick="go('shop')" class="n-shop-btn">Shop Hardware</a>
       <a href="#" onclick="go('corp')" class="n-corp-btn">Corporate Solutions</a>
+      <a href="portal.html" class="n-portal-btn">Client Portal</a>
       <a href="#" onclick="go('repair')">Repair</a>
       <a href="#" onclick="go('contact')">Contact</a>
     </div>
@@ -395,6 +399,7 @@
         <a href="#" onclick="go('shop')" class="cta-pill cta-fill-w">Shop hardware →</a>
         <a href="#" onclick="go('repair')" class="cta-pill cta-out" aria-label="Repair and diagnostics">Repair →</a>
         <a href="#" onclick="go('corp')" class="cta-pill cta-fill" aria-label="Enterprise and repair services for businesses">Corporate Solutions →</a>
+        <a href="portal.html" class="cta-pill cta-out" aria-label="Open the B2B client portal">Client Portal →</a>
       </div>
       <p style="font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:rgba(255,255,255,.62);margin-top:22px;margin-bottom:0;">GENUINE STOCK · FULL WARRANTY · EXPERT ADVICE · WHATSAPP QUOTES</p>
     </div>
@@ -426,14 +431,14 @@
         </div>
         <span class="door-go">Book a repair →</span>
       </div>
-      <div class="door" onclick="go('corp')">
+      <div class="door" onclick="location.href='portal.html'">
         <span class="door-tag">Enterprise · B2B</span>
         <div class="door-mid">
           <div class="door-num">03</div>
-          <h3>Outsource IT</h3>
-          <p>Managed infrastructure, 4-hour SLA, procurement & security. Your IT department, run by us.</p>
+          <h3>Client Portal</h3>
+          <p>Bulk quotes, manager approvals, maintenance contracts, RMA tracking, invoices, and saved reorder templates.</p>
         </div>
-        <span class="door-go">Request a quote →</span>
+        <span class="door-go">Open portal →</span>
       </div>
     </div>
   </div>
@@ -667,6 +672,7 @@
       <p>Fleet maintenance, SLA-backed support, wholesale procurement, and custom project sourcing — all through a single partner.</p>
       <div class="cta-row">
         <a href="#corp-rfp" class="cta-pill cta-fill-w" onclick="setTimeout(function(){document.getElementById('corp-rfp').scrollIntoView({behavior:'smooth'})},100)">Request a Custom Quote</a>
+        <a href="portal.html" class="cta-pill cta-fill">Open Client Portal</a>
         <a href="https://wa.me/9613839983?text=Hi%2C%20interested%20in%20corporate%20IT%20solutions" target="_blank" class="cta-pill cta-out">WhatsApp us</a>
       </div>
     </div>
@@ -900,6 +906,7 @@
       <p>Diagnostic-driven service for high-performance systems and corporate fleets. No flat rates — every engagement is scoped to your hardware, your workload, and your SLA.</p>
       <div class="cta-row">
         <a href="#" onclick="go('repair','tier1');return false" class="cta-pill cta-fill-w">Request a repair</a>
+        <a href="portal.html" class="cta-pill cta-fill">Track RMA</a>
         <a href="#" onclick="go('repair','tier2');return false" class="cta-pill cta-out">B2B service contracts</a>
       </div>
     </div>
@@ -1203,7 +1210,7 @@
   <div class="f-in">
     <div><div class="f-brand">ADS<span>TECH</span></div><p>Lebanon's trusted destination for computers, IT services, and expert repair.</p><p style="margin-top:12px;"><a href="https://wa.me/9613839983" target="_blank" style="color:var(--wa-ink);font-weight:500;">WhatsApp Us →</a></p></div>
     <div><h4>Shop</h4><a href="#" onclick="go('shop')">All Products</a><a href="#" onclick="go('shop')">Laptops</a><a href="#" onclick="go('shop')">Monitors</a><a href="#" onclick="go('shop')">Peripherals</a></div>
-    <div><h4>Services</h4><a href="#" onclick="go('corp')">Corporate IT</a><a href="#" onclick="go('repair')">Repair</a><a href="#" onclick="go('contact')">Contact</a></div>
+    <div><h4>Services</h4><a href="#" onclick="go('corp')">Corporate IT</a><a href="portal.html">Client Portal</a><a href="#" onclick="go('repair')">Repair</a><a href="#" onclick="go('contact')">Contact</a></div>
     <div><h4>Policies</h4><a href="#" onclick="go('policies','pol-shipping');return false">Shipping &amp; Delivery</a><a href="#" onclick="go('policies','pol-returns');return false">Returns &amp; Warranty</a><a href="#" onclick="go('policies','pol-privacy');return false">Privacy</a><a href="#" onclick="go('policies','pol-terms');return false">Terms</a><p style="margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--fg3);">COD · Whish · OMT</p></div>
   </div>
   <div class="f-bot"><span>© 2026 ADS Tech · Beirut, Lebanon</span><span>ads-tech.com</span></div>
@@ -1298,6 +1305,15 @@ function enhanceCards(){
     var specs=(card.querySelector('.pc-specs')||{}).textContent||'';
     var priceEl=card.querySelector('.pc-price'), price=priceEl?priceEl.textContent:'';
     var info=card.querySelector('.pc-info'), wa=card.querySelector('.pc-wa');
+    var photo=card.querySelector('.pc-img img');
+    if(photo && !photo.dataset.fallbackReady){
+      photo.dataset.fallbackReady='1';
+      photo.addEventListener('error',function(){
+        var wrap=photo.parentNode;
+        if(!wrap) return;
+        wrap.innerHTML='<div class="pc-ph" role="img" aria-label="'+(brand||'ADS TECH')+' product image pending"><span class="pc-ph-b">'+(brand||'ADS TECH')+'</span><span class="pc-ph-c">'+((card.dataset.c||'hardware'))+'</span><span class="pc-ph-n">Photo on request</span></div>';
+      },{once:true});
+    }
     if(priceEl && !priceEl.querySelector('.cur')) priceEl.innerHTML=price.replace(/^\s*\$/,'<span class="cur">$</span>');
     if(info && !info.querySelector('.pc-trust')){
       var t=document.createElement('div'); t.className='pc-trust';
@@ -1461,8 +1477,9 @@ function jvHandoff(){var s=jvSynth();var wa='https://wa.me/'+WA+'?text='+encodeU
           sd.innerHTML=items.map(function(p){
             var src=imgSrc(p.img);
             var specs=p.specs?('<div style="font-family:var(--mono);font-size:10px;color:var(--fg3);margin-top:2px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;">'+hl(p.specs,q)+'</div>'):'';
+            var ph='<div style="width:44px;height:44px;border-radius:4px;background:linear-gradient(135deg,#0b0c0f,#2b6fff);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;flex-shrink:0;">'+esc((p.brand||'ADS').slice(0,3).toUpperCase())+'</div>';
             return '<a href="#" onclick="searchNav(\''+esc(p.category)+'\');return false;" style="display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--fg);border-bottom:1px solid var(--line);">'+
-              (src?'<img src="'+esc(src)+'" alt="" style="width:44px;height:44px;object-fit:contain;border-radius:4px;background:var(--panel);flex-shrink:0;">':'')+
+              (src?'<img src="'+esc(src)+'" alt="" onerror="this.outerHTML=&quot;'+ph.replace(/"/g,'&quot;')+'&quot;" style="width:44px;height:44px;object-fit:contain;border-radius:4px;background:var(--panel);flex-shrink:0;">':ph)+
               '<div style="min-width:0;flex:1;"><strong style="display:block;font-size:13px;line-height:1.3;">'+hl(p.brand+' '+p.name,q)+'</strong>'+
               '<span style="font-size:11px;color:var(--fg3);">'+esc(p.category)+'</span>'+
               specs+'</div></a>';
@@ -1493,5 +1510,6 @@ function jvHandoff(){var s=jvSynth();var wa='https://wa.me/'+WA+'?text='+encodeU
 <!-- Data-driven catalog (quote model) - renders products from the admin-managed backend -->
 <script>window.ADS_API = window.ADS_API || 'https://ads-tech-store-production.up.railway.app';</script>
 <script src="catalog.js?v=2"></script>
+<script src="cart.js?v=2"></script>
 </body>
 </html>

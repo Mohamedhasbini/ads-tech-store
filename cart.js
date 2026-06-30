@@ -7,7 +7,7 @@
  */
 (function () {
   "use strict";
-  var API = (window.ADS_API || "http://localhost:8001").replace(/\/$/, "");
+  var API = (window.ADS_API || "https://ads-tech-store-production.up.railway.app").replace(/\/$/, "");
   var KEY = "ads_cart_v1";
   var BYSLUG = {};        // slug -> product (live)
   var cart = load();      // {slug: qty}

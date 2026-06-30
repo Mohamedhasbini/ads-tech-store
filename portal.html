@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADS Tech B2B Portal</title>
+  <link rel="stylesheet" href="cart.css">
+  <style>
+    :root{--font:Inter,Arial,sans-serif;--mono:"JetBrains Mono",monospace;--ink:#fff;--panel:#f7f7f8;--line:#e5e5ea;--fg:#0b0c0f;--fg2:#525a67;--fg3:#6b7280;--signal:#2b6fff;--wa:#25d366;--deal:#d8472b}
+    *{box-sizing:border-box}body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--font)}button,input,select,textarea{font:inherit}
+    .portal-shell{max-width:1180px;margin:0 auto;padding:28px 20px 56px}.portal-top{display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{font-weight:800;letter-spacing:.12em}.muted{color:var(--fg3);font-size:13px}.top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.tabs button,.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:10px 14px;cursor:pointer;color:var(--fg);text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.tabs button.active,.btn.primary{background:var(--signal);border-color:var(--signal);color:#fff}.btn.ok{background:var(--wa);border-color:var(--wa);color:#fff}.btn.warn{background:var(--deal);border-color:var(--deal);color:#fff}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid var(--line);border-radius:8px;padding:18px;background:#fff}.card h3{margin:0 0 8px}.panel{display:none}.panel.active{display:block}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form .full{grid-column:1/-1}.field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--fg2)}.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:8px;padding:11px;background:var(--panel);color:var(--fg)}.list{display:grid;gap:10px}.row{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid var(--line);border-radius:8px;padding:14px;background:#fff}.status{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3)}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}.step{height:8px;border-radius:20px;background:var(--line)}.step.on{background:var(--signal)}.role-note{font-family:var(--mono);font-size:12px;color:var(--fg3)}@media(max-width:820px){.grid,.form{grid-template-columns:1fr}.portal-top,.row{align-items:flex-start;flex-direction:column}.steps{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="portal-shell">
+    <header class="portal-top">
+      <div><div class="brand">ADS TECH</div><p class="muted">B2B customer portal for quotes, SLAs, fleet repairs, invoices, and saved reorder templates.</p></div>
+      <div class="top-actions"><a class="btn" href="index.html">Back to store</a><div id="session-box"></div></div>
+    </header>
+
+    <section id="login-panel" class="card" style="margin-top:24px">
+      <h3>Secure Portal Login</h3>
+      <p class="muted">Corporate users sign in with the access token issued by ADS Tech. Need access for your company? Request portal onboarding below.</p>
+      <div class="form">
+        <label class="field full">Secure access token<input id="token-input" autocomplete="off" placeholder="Paste your corporate portal token"></label>
+        <button class="btn primary" id="save-token">Enter portal</button>
+        <a class="btn" href="https://wa.me/9613839983?text=Hi%20ADS%20Tech%2C%20please%20activate%20our%20B2B%20client%20portal%20access." target="_blank" rel="noopener">Request access</a>
+      </div>
+    </section>
+
+    <section id="portal-app" hidden>
+      <nav class="tabs" aria-label="Portal sections">
+        <button data-tab="dashboard" class="active">Dashboard</button>
+        <button data-tab="quotes">Quotes</button>
+        <button data-tab="sla">SLA Contracts</button>
+        <button data-tab="rma">Repair / RMA</button>
+        <button data-tab="orders">Orders</button>
+      </nav>
+
+      <section id="dashboard" class="panel active">
+        <div class="grid">
+          <div class="card"><h3>Account</h3><div id="account-summary" class="muted"></div></div>
+          <div class="card"><h3>Open Quotes</h3><div id="quote-summary" class="muted"></div></div>
+          <div class="card"><h3>Active Repairs</h3><div id="rma-summary" class="muted"></div></div>
+        </div>
+      </section>
+
+      <section id="quotes" class="panel">
+        <div class="card">
+          <h3>Request Bulk Hardware Quote</h3>
+          <p class="role-note" data-permission="quote:create">Corporate Buyers can create quote requests. Corporate Managers can approve finalized quotes.</p>
+          <form id="quote-form" class="form">
+            <label class="field">Project name<input name="title" required placeholder="Q3 laptop refresh"></label>
+            <label class="field">Required by<input name="required_by" type="date"></label>
+            <label class="field full">Items<textarea name="items" rows="5" required placeholder="10x Lenovo ThinkPad E16, 20x monitors, 5x docks"></textarea></label>
+            <label class="field full">Notes<textarea name="notes" rows="3" placeholder="Warranty, delivery site, budget, SLA needs"></textarea></label>
+            <button class="btn primary" data-permission="quote:create">Submit quote request</button>
+          </form>
+        </div>
+        <div class="list" id="quotes-list" style="margin-top:16px"></div>
+      </section>
+
+      <section id="sla" class="panel">
+        <div class="list" id="contracts-list"></div>
+      </section>
+
+      <section id="rma" class="panel">
+        <div class="card">
+          <h3>Generate Repair Ticket / RMA</h3>
+          <form id="rma-form" class="form">
+            <label class="field">Device serial<input name="serial_number" required></label>
+            <label class="field">Asset tag<input name="asset_tag"></label>
+            <label class="field full">Failure description<textarea name="description" rows="4" required></textarea></label>
+            <button class="btn primary">Create RMA</button>
+          </form>
+        </div>
+        <div class="list" id="rma-list" style="margin-top:16px"></div>
+      </section>
+
+      <section id="orders" class="panel">
+        <div class="list" id="orders-list"></div>
+      </section>
+    </section>
+  </main>
+  <script>window.ADS_API = window.ADS_API || "https://ads-tech-store-production.up.railway.app";</script>
+  <script src="portal.js"></script>
+</body>
+</html>
