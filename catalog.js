@@ -1,8 +1,7 @@
-/* ADS Tech catalog — quote model, data-driven.
- * Renders the shop grid from the store backend so products added in /admin
- * appear live. No prices: every card is a "Request a quote on WhatsApp" CTA.
- * If the backend is unreachable, the static cards already in the HTML remain
- * as a fallback (this script simply does nothing).
+/* ADS Tech catalog — hybrid mode.
+ * Static cards in index.html are the primary catalog.
+ * If the backend is reachable, any NEW products not already in the static
+ * grid are appended. Static cards are never removed or replaced.
  */
 (function () {
   "use strict";
@@ -31,17 +30,31 @@
     var grid = document.getElementById("pgrid");
     if (!grid) return;
     var items = products.filter(function (p) { return p.kind !== "service"; });
-    if (!items.length) return;                 // keep static fallback
-    grid.innerHTML = items.map(card).join("");
+    if (!items.length) return;
 
-    // Re-wire the existing helpers (WhatsApp quote message, trust line, 3D chips,
-    // featured strip, keyboard activation) against the freshly rendered cards.
+    var staticNames = {};
+    grid.querySelectorAll('.pc .pc-name').forEach(function(el) {
+      staticNames[el.textContent.trim().toLowerCase()] = true;
+    });
+
+    var newItems = items.filter(function(p) {
+      var name = (p.name || '').toLowerCase();
+      return !staticNames[name];
+    });
+
+    if (newItems.length) {
+      var tmp = document.createElement('div');
+      tmp.innerHTML = newItems.map(card).join("");
+      while (tmp.firstChild) grid.appendChild(tmp.firstChild);
+    }
+
     var fg = document.getElementById("featured-grid");
     if (fg) fg.innerHTML = "";
     try { if (window.enhanceCards) window.enhanceCards(); } catch (e) {}
     try { if (window.buildFeatured) window.buildFeatured(); } catch (e) {}
+    var total = grid.querySelectorAll('.pc').length;
     var cnt = document.getElementById("cnt");
-    if (cnt) cnt.textContent = items.length + " products · request a quote on WhatsApp";
+    if (cnt) cnt.textContent = total + " products · request a quote on WhatsApp";
   }
 
   function boot() {
