@@ -32,22 +32,7 @@
     var items = products.filter(function (p) { return p.kind !== "service"; });
     if (!items.length) return;
 
-    var staticNames = {};
-    grid.querySelectorAll('.pc .pc-name').forEach(function(el) {
-      staticNames[el.textContent.trim().toLowerCase()] = true;
-    });
-
-    var newItems = items.filter(function(p) {
-      var name = (p.name || '').toLowerCase();
-      return !staticNames[name];
-    });
-
-    if (newItems.length) {
-      var tmp = document.createElement('div');
-      tmp.innerHTML = newItems.map(card).join("");
-      while (tmp.firstChild) grid.appendChild(tmp.firstChild);
-    }
-
+    // Static cards are the authoritative catalog — backend only updates the count
     var fg = document.getElementById("featured-grid");
     if (fg) fg.innerHTML = "";
     try { if (window.enhanceCards) window.enhanceCards(); } catch (e) {}
