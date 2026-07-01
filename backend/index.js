@@ -5,8 +5,9 @@ const cookieParser = require('cookie-parser');
 const helmet       = require('helmet');
 const cors         = require('cors');
 
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/user');
+const authRoutes   = require('./routes/auth');
+const userRoutes   = require('./routes/user');
+const searchRoutes = require('./routes/search');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;  // Railway injects PORT
@@ -32,8 +33,9 @@ app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 
 /* Routes */
-app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
+app.use('/api/auth',   authRoutes);
+app.use('/api/user',   userRoutes);
+app.use('/api/search', searchRoutes);
 
 /* Health check — Railway uses this */
 app.get('/health', (req, res) => res.json({ status: 'ok', ts: new Date().toISOString() }));
