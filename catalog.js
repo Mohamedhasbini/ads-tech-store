@@ -48,6 +48,8 @@
       '<div class="pc-info"><div class="pc-brand">' + esc(p.brand) + '</div>' +
       '<div class="pc-name">' + esc(p.name) + '</div>' +
       '<div class="pc-specs">' + esc(p.specs) + '</div></div>' +
+      '<div class="pc-trust"><span class="dot"></span> In Stock &nbsp;|&nbsp; Genuine &nbsp;|&nbsp; 1-yr Warranty</div>' +
+      (p.price ? '<div class="pc-price"><span class="cur">$</span>' + esc(String(p.price).replace(/^\$/,'')) + '</div>' : '') +
       '<a href="#" class="pc-wa" target="_blank" rel="noopener">' + WA_SVG + ' Request a quote</a></div>';
   }
 
