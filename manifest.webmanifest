@@ -1,0 +1,14 @@
+{
+  "name": "ADS Tech — Computers & IT Services",
+  "short_name": "ADS Tech",
+  "description": "Laptops, monitors, components, PC repair and corporate IT in Beirut, Lebanon.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0c10",
+  "theme_color": "#0b0c10",
+  "icons": [
+    { "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

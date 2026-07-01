@@ -42,7 +42,7 @@
       ? '<div class="pc-badge" style="background:#b35900">Only ' + p.stock_qty + ' left</div>' : '';
     return '<div class="pc" data-c="' + esc(p.category) + '" data-slug="' + esc(p.slug || slugify(p.brand || "", p.name || "")) + '">' +
       '<div class="pc-img">' + badge +
-      (p.img ? '<img src="' + esc(p.img) + '" alt="' + esc(p.brand + " " + p.name) + '" loading="lazy">'
+      (p.img ? '<img src="' + esc(p.img) + '" alt="' + esc(p.brand + " " + p.name) + '" loading="lazy" decoding="async">'
              : placeholder(p)) +
       '</div>' +
       '<div class="pc-info"><div class="pc-brand">' + esc(p.brand) + '</div>' +

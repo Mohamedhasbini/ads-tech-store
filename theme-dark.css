@@ -1,0 +1,100 @@
+/* ═══════════════════════════════════════════════════════════════
+   ADS Tech — Premium Dark Glassmorphic Theme
+   Activated via <html data-theme="dark">. Light mode untouched.
+   ═══════════════════════════════════════════════════════════════ */
+
+html[data-theme="dark"]{
+  --ink:#0b0c10;          /* page base — near-black */
+  --panel:#15161d;        /* raised surface */
+  --panel2:#1c1e27;       /* hover surface */
+  --line:#262832;         /* hairline */
+  --line-hi:#343744;      /* brighter hairline */
+  --fg:#f2f3f7;           /* primary text */
+  --fg2:#a9b0bf;          /* muted — AA on dark */
+  --fg3:#7e8595;          /* faint / labels */
+  --volt:#f2f3f7;
+  --signal:#5b95ff;       /* interactive blue, lifted for dark */
+  --wa-ink:#34d374;       /* whatsapp link — accessible on dark */
+  color-scheme:dark;
+}
+
+/* ── Selection ── */
+html[data-theme="dark"] ::selection{background:var(--signal);color:#0b0c10}
+
+/* ── Nav: dark glass ── */
+html[data-theme="dark"] .nav.nav-solid{
+  background:rgba(15,16,22,.72);
+  backdrop-filter:saturate(160%) blur(22px);
+  -webkit-backdrop-filter:saturate(160%) blur(22px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  box-shadow:0 1px 0 rgba(255,255,255,.04),0 12px 48px rgba(0,0,0,.5);
+}
+html[data-theme="dark"] .nav-solid .n-signin-btn{background:var(--signal);border-color:var(--signal);color:#fff}
+html[data-theme="dark"] .nav-solid .n-signin-btn:hover{background:transparent;color:var(--signal)}
+
+/* ── Search: dark glass dropdown ── */
+html[data-theme="dark"] #global-search:focus,
+html[data-theme="dark"] .nav-solid #global-search:focus{
+  background:rgba(28,30,39,.95)!important;border-color:var(--signal)!important;
+  box-shadow:0 0 0 3px rgba(91,149,255,.18)!important;color:var(--fg)!important;
+}
+html[data-theme="dark"] .srch-drop{
+  background:rgba(21,22,29,.88);border:1px solid rgba(255,255,255,.09);
+  backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
+  box-shadow:0 24px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+/* ── Dropdowns / flyouts: glass ── */
+html[data-theme="dark"] .n-cart-drop,
+html[data-theme="dark"] .n-user-drop,
+html[data-theme="dark"] .facet-sidebar{
+  background:rgba(21,22,29,.9);border-color:rgba(255,255,255,.09);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 16px 48px rgba(0,0,0,.55);
+}
+
+/* ── Product cards: dark body, product tile stays light (floating look) ── */
+html[data-theme="dark"] .pc{
+  background:#17181f;
+  box-shadow:0 2px 10px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.06);
+}
+html[data-theme="dark"] .pc:hover{
+  box-shadow:0 24px 56px rgba(0,0,0,.6),0 0 0 1px rgba(91,149,255,.25);
+}
+html[data-theme="dark"] .pc-img{background:#ececf0}
+html[data-theme="dark"] .pc-img::after{
+  background:linear-gradient(180deg,transparent 62%,rgba(23,24,31,.22) 92%,rgba(23,24,31,.5) 100%);
+}
+html[data-theme="dark"] .pc-price{color:var(--fg)}
+
+/* ── Quick-view modal / gallery ── */
+html[data-theme="dark"] .gm-box{background:#15161d;box-shadow:0 48px 140px rgba(0,0,0,.7)}
+html[data-theme="dark"] .gm-gallery{background:#ececf0}
+html[data-theme="dark"] .gm-chip{background:#1c1e27;border-color:rgba(255,255,255,.14);color:var(--fg2)}
+html[data-theme="dark"] .gm-arrow:hover{background:#262832;box-shadow:0 4px 18px rgba(0,0,0,.5)}
+html[data-theme="dark"] .im-close:hover{background:#262832}
+
+/* ── Forms ── */
+html[data-theme="dark"] .fld:focus{background:#1c1e27;border-color:var(--signal)}
+
+/* ── Footer ── */
+html[data-theme="dark"] .footer{background:#0e0f14;border-top:1px solid rgba(255,255,255,.07)}
+
+/* ── White CTA pill: keep contrast ── */
+html[data-theme="dark"] .cta-fill-w{background:#f2f3f7;color:#0b0c10;border-color:#f2f3f7}
+
+/* ═══ Theme toggle button (styled for BOTH modes) ═══ */
+.n-theme{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:7px;cursor:pointer;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  transition:var(--t,.3s);padding:0;
+}
+.nav-solid .n-theme{background:var(--panel);border-color:var(--line)}
+.n-theme:hover{border-color:var(--signal)}
+.n-theme .ti{width:14px;height:14px;border-radius:50%;position:relative;display:block;
+  background:transparent;border:2px solid rgba(255,255,255,.75);transition:.3s}
+.nav-solid .n-theme .ti{border-color:var(--fg2)}
+/* moon shape in light mode (click -> dark), sun-ish filled in dark */
+html[data-theme="dark"] .n-theme .ti{background:currentColor;border-color:transparent;
+  color:#ffd479;box-shadow:0 0 8px rgba(255,212,121,.55)}
