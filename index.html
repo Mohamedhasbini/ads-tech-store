@@ -190,31 +190,30 @@
     .shop-sec h1{font-family:var(--display);font-size:clamp(34px,5vw,52px);font-weight:600;letter-spacing:-.03em;margin-bottom:6px}
     .shop-sec .sub{font-family:var(--mono);font-size:13px;color:var(--fg3);letter-spacing:.05em;margin-bottom:34px}
     .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-    .pc{position:relative;background:var(--ink);transition:var(--t);display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
-    .pc:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(11,12,15,.10);border-color:var(--line-hi)}
-    .pc-img{aspect-ratio:4/3;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;padding:6px;box-shadow:inset 0 0 0 1px rgba(11,12,15,.06)}
-    .pc[data-c="component"] .pc-img,.pc[data-c="peripheral"] .pc-img,.pc[data-c="server"] .pc-img,.pc[data-c="storage"] .pc-img,.pc[data-c="networking"] .pc-img,.pc[data-c="printer"] .pc-img,.pc[data-c="minipc"] .pc-img{background:#141416;box-shadow:none;padding:0}
-    .pc-img::after{content:'';position:absolute;inset:0;box-shadow:inset 0 -1px 0 0 rgba(11,12,15,.06);pointer-events:none;z-index:1}
-    .pc-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center;image-rendering:-webkit-optimize-contrast;transition:transform .6s var(--ease);display:block}
-    .pc:hover .pc-img img{transform:scale(1.09)}
-    .pc-badge{position:absolute;top:12px;left:12px;background:var(--signal);color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;padding:5px 10px;letter-spacing:.1em;z-index:3;border-radius:6px;text-transform:uppercase}
+    .pc{position:relative;background:#fff;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid #e4e6ea;box-shadow:0 2px 8px rgba(11,12,15,.06)}
+    .pc:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(11,12,15,.12);border-color:#c8ccd4}
+    .pc-img{aspect-ratio:1/1;background:#f7f8fa;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;padding:20px}
+    .pc[data-c="component"] .pc-img,.pc[data-c="peripheral"] .pc-img,.pc[data-c="server"] .pc-img,.pc[data-c="storage"] .pc-img,.pc[data-c="networking"] .pc-img,.pc[data-c="printer"] .pc-img,.pc[data-c="minipc"] .pc-img{background:#111214;padding:16px}
+    .pc-img img{width:100%;height:100%;object-fit:contain;object-position:center;image-rendering:-webkit-optimize-contrast;transition:transform .5s cubic-bezier(.25,.46,.45,.94);mix-blend-mode:multiply}
+    .pc[data-c="component"] .pc-img img,.pc[data-c="peripheral"] .pc-img img,.pc[data-c="server"] .pc-img img,.pc[data-c="storage"] .pc-img img,.pc[data-c="networking"] .pc-img img,.pc[data-c="printer"] .pc-img img,.pc[data-c="minipc"] .pc-img img{mix-blend-mode:normal}
+    .pc:hover .pc-img img{transform:scale(1.07)}
+    .pc-badge{position:absolute;top:10px;left:10px;background:var(--signal);color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;padding:4px 9px;letter-spacing:.1em;z-index:3;border-radius:5px;text-transform:uppercase}
     .pc-badge.b-deal{background:var(--deal)}
     .pc-badge.b-value{background:var(--value)}
-    /* 3D affordance chip on configurable cards */
-    .pc-3d{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:5px;background:rgba(11,12,15,.82);color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;padding:5px 9px;border-radius:20px;z-index:3;backdrop-filter:blur(4px);transition:var(--t)}
+    .pc-3d{position:absolute;top:10px;right:10px;display:inline-flex;align-items:center;gap:5px;background:rgba(11,12,15,.75);color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;padding:5px 9px;border-radius:20px;z-index:3;backdrop-filter:blur(4px);transition:background .2s}
     .pc.has-3d .pc-img{cursor:pointer}
     .pc.has-3d:hover .pc-3d{background:var(--signal)}
-    .pc-info{padding:16px 16px 4px;display:flex;flex-direction:column;flex:1}
-    .pc-brand{font-family:var(--mono);font-size:10px;color:var(--fg3);text-transform:uppercase;letter-spacing:.18em;font-weight:500}
-    .pc-name{font-size:14px;font-weight:600;line-height:1.4;margin:6px 0;color:var(--fg);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:58px}
-    .pc-specs{font-family:var(--mono);font-size:11px;color:var(--fg2);line-height:1.5;letter-spacing:.02em}
-    .pc-trust{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--fg3);letter-spacing:.04em;margin-top:10px}
-    .pc-trust .dot{width:6px;height:6px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 3px rgba(37,211,102,.18);flex-shrink:0}
-    .pc-price{font-family:var(--display);font-size:27px;font-weight:700;letter-spacing:-.02em;padding:10px 16px 14px;color:var(--fg);margin-top:auto}
-    .pc-price .cur{font-size:16px;font-weight:600;color:var(--fg3);margin-right:1px;vertical-align:6px}
-    .pc-wa{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--wa);transition:var(--t);margin:0 12px 12px;border-radius:10px}
+    .pc-info{padding:14px 16px 4px;display:flex;flex-direction:column;flex:1}
+    .pc-brand{font-family:var(--mono);font-size:10px;color:#8a8f9a;text-transform:uppercase;letter-spacing:.18em;font-weight:600}
+    .pc-name{font-size:15px;font-weight:700;line-height:1.35;margin:5px 0 8px;color:#0b0c0f;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:40px}
+    .pc-specs{font-family:var(--mono);font-size:12px;color:#5a5f6e;line-height:1.6;letter-spacing:.01em}
+    .pc-trust{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:#8a8f9a;letter-spacing:.04em;margin-top:10px}
+    .pc-trust .dot{width:6px;height:6px;border-radius:50%;background:#25d366;box-shadow:0 0 0 3px rgba(37,211,102,.18);flex-shrink:0}
+    .pc-price{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.02em;padding:10px 16px 12px;color:#0b0c0f;margin-top:auto}
+    .pc-price .cur{font-size:15px;font-weight:600;color:#8a8f9a;margin-right:1px;vertical-align:5px}
+    .pc-wa{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:#25d366;transition:filter .2s,transform .2s,box-shadow .2s;margin:0 12px 12px;border-radius:9px}
     .pc-wa svg{width:16px;height:16px;fill:#fff;flex-shrink:0}
-    .pc-wa:hover{background:#1c9e4d;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,.3)}
+    .pc-wa:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,211,102,.35)}
 
     /* TABS */
     .tabs{display:flex;justify-content:center;gap:0;padding:28px 24px 0;flex-wrap:wrap;max-width:1180px;margin:0 auto}
@@ -342,10 +341,31 @@
     /* Quote model: no public pricing — customers request a quote on WhatsApp */
     .pc-price{display:none!important}
     .pc-wa{margin:12px!important}
-    .pc-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#0b0c0f 0%,#1b2436 60%,#2b6fff 160%);border-radius:14px}
-    .pc-ph-b{font-family:var(--display,sans-serif);font-weight:700;font-size:22px;letter-spacing:.02em;color:#fff;text-transform:uppercase}
-    .pc-ph-c{font-family:var(--mono,monospace);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
-    .pc-ph-n{font-family:var(--mono,monospace);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px;border:1px solid rgba(255,255,255,.25);padding:3px 8px;border-radius:20px}
+    .pc-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#f0f2f5;border-radius:6px}
+    .pc-ph svg.ph-icon{width:48px;height:48px;opacity:.25}
+    .pc-ph-b{font-family:var(--mono,monospace);font-weight:700;font-size:11px;letter-spacing:.18em;color:#0b0c0f;text-transform:uppercase;opacity:.5}
+    .pc-ph-c{display:none}
+    .pc-ph-n{font-family:var(--mono,monospace);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8a8f9a;border:1px solid #d0d3da;padding:3px 9px;border-radius:20px}
+    /* Repair status tracker */
+    .repair-track{background:#13151a;border-radius:14px;padding:32px 36px;margin:0 24px 40px;max-width:1180px;margin-left:auto;margin-right:auto}
+    .repair-track h3{font-family:var(--display);font-size:18px;font-weight:600;color:#f0f1f3;margin:0 0 28px;letter-spacing:-.01em}
+    .rt-steps{display:flex;align-items:flex-start;gap:0;position:relative}
+    .rt-steps::before{content:'';position:absolute;top:17px;left:calc(10% + 17px);right:calc(10% + 17px);height:2px;background:#2a2d35;z-index:0}
+    .rt-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:1}
+    .rt-dot{width:34px;height:34px;border-radius:50%;border:2px solid #2a2d35;background:#13151a;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0}
+    .rt-dot svg{width:14px;height:14px;fill:#3a3d45}
+    .rt-step.done .rt-dot{background:#2b6fff;border-color:#2b6fff}
+    .rt-step.done .rt-dot svg{fill:#fff}
+    .rt-step.active .rt-dot{background:#0b0c0f;border-color:#f97316;box-shadow:0 0 0 4px rgba(249,115,22,.18)}
+    .rt-step.active .rt-dot svg{fill:#f97316}
+    .rt-step.done+.rt-step::before,.rt-step.done~.rt-step.done::before{content:none}
+    .rt-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#4a4f5a;text-align:center;line-height:1.3}
+    .rt-step.done .rt-label{color:#8a9ac0}
+    .rt-step.active .rt-label{color:#f97316}
+    /* SLA download btn */
+    .sla-dl{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:10px 16px;background:#1a1d24;border:1px solid #2a2d35;border-radius:8px;color:#8a9ac0;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,color .2s;text-decoration:none}
+    .sla-dl:hover{border-color:#2b6fff;color:#2b6fff}
+    .sla-dl svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
   </style>
 </head>
 <body>
@@ -720,6 +740,7 @@
           <li>Remote diagnostics included</li>
         </ul>
         <a href="#corp-rfp" class="cta-pill cta-out-b" style="justify-content:center;font-size:11px;" onclick="setTimeout(function(){document.getElementById('corp-rfp').scrollIntoView({behavior:'smooth'})},100)">Request Quote</a>
+        <a href="https://wa.me/9613839983?text=Hi%2C%20I%20need%20a%20Standard%20SLA%20contract%20template" class="sla-dl" target="_blank"><svg viewBox="0 0 16 16"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>Download Contract Template</a>
       </div>
       <div class="sla-card sla-card--hi">
         <h3>Priority</h3>
@@ -730,6 +751,7 @@
           <li>On-site dispatch included</li>
         </ul>
         <a href="#corp-rfp" class="cta-pill cta-fill" style="justify-content:center;font-size:11px;border:none;" onclick="setTimeout(function(){document.getElementById('corp-rfp').scrollIntoView({behavior:'smooth'})},100)">Request Quote</a>
+        <a href="https://wa.me/9613839983?text=Hi%2C%20I%20need%20a%20Priority%20SLA%20contract%20template" class="sla-dl" target="_blank"><svg viewBox="0 0 16 16"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>Download Contract Template</a>
       </div>
       <div class="sla-card">
         <h3>Enterprise</h3>
@@ -740,6 +762,7 @@
           <li>Custom SLA terms &amp; penalty clauses</li>
         </ul>
         <a href="#corp-rfp" class="cta-pill cta-out-b" style="justify-content:center;font-size:11px;" onclick="setTimeout(function(){document.getElementById('corp-rfp').scrollIntoView({behavior:'smooth'})},100)">Request Quote</a>
+        <a href="https://wa.me/9613839983?text=Hi%2C%20I%20need%20an%20Enterprise%20SLA%20contract%20template" class="sla-dl" target="_blank"><svg viewBox="0 0 16 16"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>Download Contract Template</a>
       </div>
     </div>
   </div>
@@ -959,6 +982,35 @@
       <div><strong>NDA-backed handling</strong><span>Confidential data &amp; asset custody</span></div>
     </div>
   </div></div>
+
+  <!-- REPAIR STATUS TRACKER -->
+  <div class="band-mid" style="padding:48px 24px 0">
+    <div class="repair-track">
+      <h3>Repair Progress Tracker</h3>
+      <div class="rt-steps">
+        <div class="rt-step done">
+          <div class="rt-dot"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 8l3.5 3.5L13 4.5"/></svg></div>
+          <div class="rt-label">Received</div>
+        </div>
+        <div class="rt-step done">
+          <div class="rt-dot"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="3"/><path fill="none" stroke="currentColor" stroke-width="1.5" d="M8 2v1M8 13v1M2 8h1M13 8h1M4.2 4.2l.7.7M11.1 11.1l.7.7M11.1 4.9l-.7.7M4.9 11.1l-.7.7"/></svg></div>
+          <div class="rt-label">Diagnostics</div>
+        </div>
+        <div class="rt-step active">
+          <div class="rt-dot"><svg viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M2 8h3l2-5 2 10 2-5h3"/></svg></div>
+          <div class="rt-label">Repairing</div>
+        </div>
+        <div class="rt-step">
+          <div class="rt-dot"><svg viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 2a6 6 0 100 12A6 6 0 008 2zm0 3v3l2 2"/></svg></div>
+          <div class="rt-label">Quality Check</div>
+        </div>
+        <div class="rt-step">
+          <div class="rt-dot"><svg viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 8l3.5 3.5L13 4.5"/></svg></div>
+          <div class="rt-label">Ready</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="band-dark" style="padding:72px 0"><div id="tier1" class="svc-page">
     <div class="svc-eye">Tier 1 · Individual &amp; Prosumer</div>

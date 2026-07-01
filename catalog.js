@@ -24,8 +24,8 @@
   }
   function placeholder(p) {
     return '<div class="pc-ph" role="img" aria-label="' + esc((p.brand || "ADS TECH") + " product image pending") + '">' +
+      '<svg class="ph-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="10" width="40" height="28" rx="3" fill="none" stroke="#0b0c0f" stroke-width="2"/><circle cx="17" cy="22" r="4" fill="none" stroke="#0b0c0f" stroke-width="2"/><path d="M4 34l10-9 7 7 6-5 17 12" fill="none" stroke="#0b0c0f" stroke-width="2" stroke-linejoin="round"/></svg>' +
       '<span class="pc-ph-b">' + esc(p.brand || "ADS TECH") + '</span>' +
-      '<span class="pc-ph-c">' + esc(p.category || "hardware") + '</span>' +
       '<span class="pc-ph-n">Photo on request</span></div>';
   }
   function wireFallback(card, p) {
