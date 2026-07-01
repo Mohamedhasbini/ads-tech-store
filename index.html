@@ -661,68 +661,58 @@
 <!-- ═══════════════════════════════════════ -->
 <div id="corp" class="page">
   <style>
-    /* ── Corporate page dark shell ── */
-    #corp{background:#0b0c0f;color:#e8e9ec}
-
     /* ── Form fields ── */
-    .fld{width:100%;background:#13151a;border:1px solid #1e2028;color:#e8e9ec;font-family:var(--font);font-size:14px;padding:14px 16px;transition:var(--t);outline:none;border-radius:8px}
-    .fld::placeholder{color:#4a5060}
-    .fld:focus{border-color:#2b6fff;background:#161820;box-shadow:0 0 0 3px rgba(43,111,255,.12)}
-    .fld option{background:#13151a;color:#e8e9ec}
+    .fld{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--fg);font-family:var(--font);font-size:14px;padding:14px 16px;transition:var(--t);outline:none;border-radius:8px}
+    .fld::placeholder{color:var(--fg3)}
+    .fld:focus{border-color:var(--signal);background:#fff}
+    .fld option{background:#fff;color:var(--fg)}
 
     /* ── Section wrapper ── */
     .corp-sec{max-width:1180px;margin:0 auto;padding:72px 24px}
-    .corp-sec h2{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.03em;margin-bottom:10px;color:#f0f1f3}
-    .corp-sec p.lead{color:#a8adb8;font-size:16px;max-width:700px;line-height:1.7;margin-bottom:20px}
-    .corp-eyebrow,#corp .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#70b8ff;font-weight:600;margin-bottom:12px;background:none;border:none;padding:0}
+    .corp-sec h2{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.03em;margin-bottom:10px}
+    .corp-sec p.lead{color:var(--fg2);font-size:16px;max-width:700px;line-height:1.65;margin-bottom:20px}
+    .corp-eyebrow,#corp .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);font-weight:600;margin-bottom:12px;background:none;border:none;padding:0}
 
     /* ── Feature list ── */
     .corp-sec ul.feat{list-style:none;padding:0;margin:0 0 28px;display:grid;grid-template-columns:1fr 1fr;gap:0}
-    .corp-sec ul.feat li{font-size:14px;color:#b0b7c4;padding:11px 0;display:flex;align-items:center;gap:10px;border-bottom:1px solid #1a1d23;line-height:1.5}
+    .corp-sec ul.feat li{font-size:14px;color:var(--fg2);padding:11px 0;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);line-height:1.5}
     .corp-sec ul.feat li:last-child,.corp-sec ul.feat li:nth-last-child(2):nth-child(odd){border-bottom:none}
-    .corp-sec ul.feat li::before{content:'→';color:#2b6fff;font-size:11px;font-weight:700;flex-shrink:0}
+    .corp-sec ul.feat li::before{content:'→';color:var(--signal);font-size:11px;font-weight:700;flex-shrink:0}
 
     /* ── SLA cards ── */
     .sla-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
-    .sla-card{background:#13151a;border:1px solid #1e2028;border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;border-top:3px solid #1e2028;transition:border-color .2s,box-shadow .2s}
+    .sla-card{background:var(--ink);border:1px solid var(--line);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;border-top:3px solid var(--line);transition:border-color .2s,box-shadow .2s}
     .sla-card:nth-child(1){border-top-color:#3a8fff}
-    .sla-card:nth-child(2){border-top-color:#2b6fff;box-shadow:0 8px 40px rgba(43,111,255,.15);background:#111420}
+    .sla-card:nth-child(2){border-top-color:var(--signal);box-shadow:0 8px 40px rgba(43,111,255,.08)}
     .sla-card:nth-child(3){border-top-color:#8b5cf6}
-    .sla-card h3{font-family:var(--display);font-size:20px;font-weight:600;margin-bottom:6px;color:#eceef2;letter-spacing:-.02em}
-    .sla-card .sla-sub{font-family:var(--mono);font-size:11px;color:#5a6070;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
-    .sla-card:nth-child(2) h3{color:#2b6fff}
+    .sla-card h3{font-family:var(--display);font-size:20px;font-weight:600;margin-bottom:6px;letter-spacing:-.02em}
+    .sla-card .sla-sub{font-family:var(--mono);font-size:11px;color:var(--fg3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+    .sla-card:nth-child(2) h3{color:var(--signal)}
     .sla-card ul{list-style:none;padding:0;margin:0 0 24px;flex:1}
-    .sla-card li{font-size:13.5px;color:#8a909e;padding:9px 0;border-bottom:1px solid #1a1d23;line-height:1.55;display:flex;align-items:center;gap:8px}
+    .sla-card li{font-size:13.5px;color:var(--fg2);padding:9px 0;border-bottom:1px solid var(--line);line-height:1.55;display:flex;align-items:center;gap:8px}
     .sla-card li:last-child{border-bottom:none}
-    .sla-card li::before{content:'';width:5px;height:5px;border-radius:50%;background:#2b6fff;flex-shrink:0}
+    .sla-card li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--signal);flex-shrink:0}
     .sla-card:nth-child(3) li::before{background:#8b5cf6}
-    .sla-card--hi{border-color:#2b6fff!important}
+    .sla-card--hi{border-color:var(--signal)!important}
 
     /* ── Service grid ── */
-    #corp .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1a1d23;border:1px solid #1a1d23;border-radius:16px;overflow:hidden;max-width:1180px;margin:0 auto}
-    #corp .svc{background:#0f1115;padding:28px 24px;transition:background .2s}
-    #corp .svc:hover{background:#13151a}
-    #corp .svc-t{font-family:var(--display);font-size:14px;font-weight:600;color:#eceef2;margin-bottom:6px;letter-spacing:-.01em}
-    #corp .svc-d{font-size:12.5px;color:#6b7280;line-height:1.55}
+    #corp .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:1180px;margin:0 auto}
+    #corp .svc{background:var(--ink);padding:28px 24px;transition:background .2s}
+    #corp .svc:hover{background:var(--panel)}
+    #corp .svc-t{font-family:var(--display);font-size:14px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
+    #corp .svc-d{font-size:12.5px;color:var(--fg2);line-height:1.55}
 
     /* ── RFP form ── */
     .rfp-form{display:grid;gap:16px;max-width:900px}
-    .rfp-form fieldset{border:1px solid #1e2028;border-radius:14px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;background:#0f1115}
-    .rfp-form legend{font-family:var(--display);font-size:15px;font-weight:600;padding:0 10px;color:#eceef2;letter-spacing:-.01em}
-    .rfp-form label{display:flex;flex-direction:column;gap:6px;font-size:11px;color:#5a6878;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+    .rfp-form fieldset{border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .rfp-form legend{font-family:var(--display);font-size:15px;font-weight:600;padding:0 10px;letter-spacing:-.01em}
+    .rfp-form label{display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--fg3);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
     .rfp-form .full{grid-column:1/-1}
 
     /* ── SLA download link ── */
-    .sla-dl{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:#5a6070;letter-spacing:.04em;margin-top:12px;text-decoration:none;transition:color .2s}
-    .sla-dl:hover{color:#2b6fff}
+    .sla-dl{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--fg3);letter-spacing:.04em;margin-top:12px;text-decoration:none;transition:color .2s}
+    .sla-dl:hover{color:var(--signal)}
     .sla-dl svg{width:14px;height:14px}
-
-    /* ── B2B stats dark override ── */
-    #corp .b2b-stats{border-top:1px solid #1a1d23;border-bottom:1px solid #1a1d23}
-    #corp .b2b-stat .num{color:#eceef2}
-    #corp .b2b-stat .num span{color:#2b6fff}
-    #corp .b2b-stat .lbl{color:#6b7280}
-    #corp .b2b-stat{border-right-color:#1a1d23}
 
     @media(max-width:900px){.sla-grid{grid-template-columns:1fr}#corp .svc-grid{grid-template-columns:1fr 1fr}.rfp-form fieldset{grid-template-columns:1fr}.corp-sec ul.feat{grid-template-columns:1fr}}
     @media(max-width:600px){#corp .svc-grid{grid-template-columns:1fr}}
@@ -1180,7 +1170,10 @@
 
   </div></div>
 
-  <div class="band-mid" style="padding:72px 0;background:#f5f5f7"><div class="svc-page">
+  <!-- Fade transition: dark → white -->
+  <div style="background:linear-gradient(to bottom,#0b0c0f,#ffffff);height:110px;margin-top:-1px"></div>
+
+  <div class="band-mid" style="padding:48px 0 72px;background:#ffffff"><div class="svc-page">
     <div class="svc-eye" style="color:#2b6fff">Reference</div>
     <h2 class="svc-h" style="color:#0b0c0f">Issues we diagnose</h2>
     <p class="svc-lead" style="color:#6b7280">Not sure how to describe the fault? These are the categories our intake and engineers map to.</p>
@@ -1210,17 +1203,17 @@
   </div>
   </div></div>
 
-  <div class="band-mid" style="padding:56px 0 72px"><div class="svc-page">
-    <div style="background:#13151a;border:1px solid #1e2028;border-radius:18px;padding:40px 44px;max-width:860px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+  <div style="padding:56px 0 72px;background:#ffffff"><div class="svc-page">
+    <div style="background:#f5f5f7;border:1px solid #e8e8ed;border-radius:18px;padding:40px 44px;max-width:860px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
       <div>
-        <div class="svc-eye" style="margin-bottom:10px">Corporate repair &amp; fleet service</div>
-        <h3 style="font-family:var(--display);font-size:22px;font-weight:600;color:#f0f1f3;margin:0 0 10px;letter-spacing:-.02em">Need repair for your business?</h3>
+        <div class="svc-eye" style="margin-bottom:10px;color:var(--signal)">Corporate repair &amp; fleet service</div>
+        <h3 style="font-family:var(--display);font-size:22px;font-weight:600;color:#0b0c0f;margin:0 0 10px;letter-spacing:-.02em">Need repair for your business?</h3>
         <p style="font-size:14px;color:#6b7280;margin:0;max-width:480px;line-height:1.6">We handle one-time corporate visits and full fleet contracts — SLA-backed response, dedicated technicians, and genuine parts procurement. All scoped to your organisation.</p>
         <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
-          <span style="font-family:var(--mono);font-size:11px;color:#3a4050;letter-spacing:.06em;padding:6px 12px;border:1px solid #1e2028;border-radius:20px;">One-time visits</span>
-          <span style="font-family:var(--mono);font-size:11px;color:#3a4050;letter-spacing:.06em;padding:6px 12px;border:1px solid #1e2028;border-radius:20px;">Fleet contracts</span>
-          <span style="font-family:var(--mono);font-size:11px;color:#3a4050;letter-spacing:.06em;padding:6px 12px;border:1px solid #1e2028;border-radius:20px;">SLA-backed SLAs</span>
-          <span style="font-family:var(--mono);font-size:11px;color:#3a4050;letter-spacing:.06em;padding:6px 12px;border:1px solid #1e2028;border-radius:20px;">Priority turnaround</span>
+          <span style="font-family:var(--mono);font-size:11px;color:#5a6070;letter-spacing:.06em;padding:6px 12px;border:1px solid #d1d5db;border-radius:20px;">One-time visits</span>
+          <span style="font-family:var(--mono);font-size:11px;color:#5a6070;letter-spacing:.06em;padding:6px 12px;border:1px solid #d1d5db;border-radius:20px;">Fleet contracts</span>
+          <span style="font-family:var(--mono);font-size:11px;color:#5a6070;letter-spacing:.06em;padding:6px 12px;border:1px solid #d1d5db;border-radius:20px;">SLA-backed response</span>
+          <span style="font-family:var(--mono);font-size:11px;color:#5a6070;letter-spacing:.06em;padding:6px 12px;border:1px solid #d1d5db;border-radius:20px;">Priority turnaround</span>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0;">
