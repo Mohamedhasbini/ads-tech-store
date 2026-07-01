@@ -26,6 +26,19 @@
     });
   });
 
+
+  /* Safety net: never show more than one trust row per product card */
+  function dedupeTrust() {
+    document.querySelectorAll(".pc").forEach(function (card) {
+      var rows = card.querySelectorAll(".pc-trust");
+      for (var i = 1; i < rows.length; i++) rows[i].remove();
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    dedupeTrust();
+    setTimeout(dedupeTrust, 2500); /* after live catalog hydration */
+  });
+
   /* PWA — relative path keeps the /ads-tech-store/ GitHub Pages scope */
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {

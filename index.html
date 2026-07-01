@@ -280,11 +280,11 @@
     .pc:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(11,12,15,.12),0 0 0 1px rgba(11,12,15,.08)}
 
     /* Image zone — 4:3, light-grey bg, product floats centered */
-    .pc-img{aspect-ratio:4/3;background:#f5f5f7;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;flex-shrink:0}
-    .pc-img img{width:78%;height:78%;object-fit:contain;object-position:center;transition:transform .55s cubic-bezier(.25,.46,.45,.94)}
+    .pc-img{aspect-ratio:4/3;background:#fff;margin:10px 10px 0;border-radius:16px;border:1px solid #eef0f3;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;flex-shrink:0}
+    .pc-img img{width:86%;height:86%;object-fit:contain;object-position:center;transition:transform .55s cubic-bezier(.25,.46,.45,.94)}
     .pc:hover .pc-img img{transform:scale(1.06)}
     /* Seamless gradient: grey zone → white card body */
-    .pc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(245,245,247,.9) 85%,#fff 100%);pointer-events:none;z-index:1}
+    .pc-img::after{content:none}
 
     /* Badge — pill, top-left */
     .pc-badge{position:absolute;top:12px;left:12px;background:var(--signal);color:#fff;font-family:var(--mono);font-size:9px;font-weight:700;padding:4px 11px;letter-spacing:.14em;z-index:3;border-radius:20px;text-transform:uppercase}
@@ -1607,7 +1607,7 @@ function enhanceCards(){
     var priceEl=card.querySelector('.pc-price'), price=priceEl?priceEl.textContent:'';
     var info=card.querySelector('.pc-info'), wa=card.querySelector('.pc-wa');
     if(priceEl && !priceEl.querySelector('.cur')) priceEl.innerHTML=price.replace(/^\s*\$/,'<span class="cur">$</span>');
-    if(info && !info.querySelector('.pc-trust')){
+    if(info && !card.querySelector('.pc-trust')){
       var t=document.createElement('div'); t.className='pc-trust';
       t.innerHTML='<span class="dot" aria-hidden="true"></span>In stock · Genuine · 1-yr warranty';
       info.appendChild(t);
@@ -2092,17 +2092,6 @@ else boot();
 <!-- Data-driven catalog (quote model) - renders products from the admin-managed backend -->
 <script>window.ADS_API = window.ADS_API || 'https://ads-tech-store-production.up.railway.app';</script>
 <script src="catalog.js?v=2"></script>
-<script>
-/* Hydrate static cards: inject .pc-trust between .pc-specs and .pc-price */
-(function(){
-  var TRUST='<div class="pc-trust"><span class="dot"></span> In Stock &nbsp;|&nbsp; Genuine &nbsp;|&nbsp; 1-yr Warranty</div>';
-  document.querySelectorAll('#pgrid .pc').forEach(function(c){
-    if(c.querySelector('.pc-trust'))return;
-    var ref=c.querySelector('.pc-price')||c.querySelector('.pc-wa');
-    if(ref)ref.insertAdjacentHTML('beforebegin',TRUST);
-  });
-})();
-</script>
 
 <script>
 /* ════ PRODUCT DETAIL MODAL ════ */

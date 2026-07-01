@@ -61,10 +61,11 @@ html[data-theme="dark"] .pc{
 html[data-theme="dark"] .pc:hover{
   box-shadow:0 24px 56px rgba(0,0,0,.6),0 0 0 1px rgba(91,149,255,.25);
 }
-html[data-theme="dark"] .pc-img{background:#ececf0}
-html[data-theme="dark"] .pc-img::after{
-  background:linear-gradient(180deg,transparent 62%,rgba(23,24,31,.22) 92%,rgba(23,24,31,.5) 100%);
-}
+html[data-theme="dark"] .pc-img{background:#fff;border-color:transparent;box-shadow:0 2px 14px rgba(0,0,0,.35)}
+html[data-theme="dark"] .pc-brand{color:#8b93a5}
+html[data-theme="dark"] .pc-name{color:var(--fg)}
+html[data-theme="dark"] .pc-specs{color:var(--fg2)}
+html[data-theme="dark"] .pc-trust{color:var(--fg3);border-top-color:rgba(255,255,255,.08)}
 html[data-theme="dark"] .pc-price{color:var(--fg)}
 
 /* ── Quick-view modal / gallery ── */
