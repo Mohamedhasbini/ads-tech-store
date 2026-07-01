@@ -77,41 +77,94 @@
     /* ── Film grain overlay — disabled for light mode ── */
     .grain{display:none}
 
-    /* ═══ NAV ═══ */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.82);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);height:52px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line)}
-    .nav-in{width:100%;max-width:1180px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-    .n-logo{height:22px;display:flex;align-items:center}
-    .brandmark{font-family:var(--display);font-size:19px;font-weight:700;letter-spacing:.16em;color:var(--fg);line-height:1;display:inline-flex;align-items:baseline}
-    .brandmark span{font-weight:400;font-size:11px;letter-spacing:.22em;opacity:.45;margin-left:3px}
-    .n-links{display:flex;gap:4px}
-    .n-links a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2);padding:7px 12px;border:1px solid transparent;transition:var(--t)}
-    .n-links a:hover{color:var(--fg);border-color:var(--line-hi)}
-    .n-right{display:flex;gap:8px;align-items:center}
-    .n-right a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2);transition:var(--t);padding:7px 10px}
-    .n-right a:hover{color:var(--fg)}
-    .n-right a.n-wa{color:var(--wa-ink);border:1px solid rgba(37,211,102,.4);border-radius:7px}
-    .n-right a.n-wa:hover{color:#fff;background:var(--wa);border-color:var(--wa)}
-    .n-ham{display:none;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:none;border:1px solid var(--line);cursor:pointer;color:var(--fg);padding:7px 12px}
-    .n-shop-btn{background:var(--signal)!important;color:#fff!important;border-radius:6px!important;padding:7px 14px!important;border:1px solid var(--signal)!important}
-    .n-shop-btn:hover{background:transparent!important;color:var(--signal)!important}
-    .n-corp-btn{background:#10b981!important;color:#fff!important;border-radius:6px!important;padding:7px 14px!important;border:1px solid #10b981!important}
-    .n-corp-btn:hover{background:transparent!important;color:#10b981!important}
-    .n-repair-btn{background:#f97316!important;color:#fff!important;border-radius:6px!important;padding:7px 14px!important;border:1px solid #f97316!important}
-    .n-repair-btn:hover{background:transparent!important;color:#f97316!important}
-    .n-portal-btn{background:var(--fg)!important;color:#fff!important;border-radius:6px!important;padding:7px 14px!important;border:1px solid var(--fg)!important}
-    .n-portal-btn:hover{background:transparent!important;color:var(--fg)!important}
-    .n-search{position:relative;flex:0 1 280px}
-    .n-search input{width:100%;padding:7px 12px;border:1px solid var(--line);border-radius:6px;font-size:12px;font-family:var(--font);background:var(--panel);color:var(--fg);outline:none;transition:var(--t)}
-    .n-search input:focus{border-color:var(--signal);background:#fff}
-    .n-search-drop{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 8px 8px;box-shadow:0 12px 36px rgba(0,0,0,.12);max-height:320px;overflow-y:auto;z-index:101}
-    .n-search-drop a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--fg);border-bottom:1px solid var(--line);transition:var(--t)}
+    /* ═══ NAV — Premium Glassmorphism ═══ */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:200;height:66px;display:flex;align-items:center;justify-content:center;background:transparent;border-bottom:1px solid transparent;transition:background .5s cubic-bezier(.22,.68,0,1.2),border-color .5s cubic-bezier(.22,.68,0,1.2),box-shadow .5s cubic-bezier(.22,.68,0,1.2)}
+    .nav.nav-solid{background:rgba(255,255,255,.88);backdrop-filter:saturate(200%) blur(20px);-webkit-backdrop-filter:saturate(200%) blur(20px);border-bottom:1px solid rgba(229,229,234,.9);box-shadow:0 1px 0 rgba(0,0,0,.04),0 8px 40px rgba(0,0,0,.07)}
+    .nav-wrap{width:100%;max-width:1240px;padding:0 28px;display:flex;align-items:center;gap:24px}
+    /* Logo */
+    .nav-logo{display:inline-flex;align-items:baseline;gap:2px;text-decoration:none;flex-shrink:0;line-height:1}
+    .nav-logo-a{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:.22em;color:#fff;transition:color .5s}
+    .nav-logo-b{font-family:var(--display);font-size:9.5px;font-weight:400;letter-spacing:.32em;color:rgba(255,255,255,.38);transition:color .5s;padding-bottom:1px}
+    .nav-solid .nav-logo-a{color:var(--fg)}
+    .nav-solid .nav-logo-b{color:rgba(11,12,15,.3)}
+    /* Center links */
+    .nav-links{display:flex;align-items:center;gap:0;flex:1;justify-content:center}
+    .nav-links a{position:relative;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.62);padding:8px 13px;border-radius:7px;transition:color .28s,background .28s;white-space:nowrap;text-decoration:none}
+    .nav-links a::after{content:'';position:absolute;bottom:5px;left:13px;right:13px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform .32s cubic-bezier(.22,.68,0,1.2);opacity:.65}
+    .nav-links a:hover{color:rgba(255,255,255,.95)}
+    .nav-links a:hover::after,.nav-links a.nl-active::after{transform:scaleX(1)}
+    .nav-links a.nl-active{color:#fff}
+    .nav-solid .nav-links a{color:var(--fg3)}
+    .nav-solid .nav-links a:hover,.nav-solid .nav-links a.nl-active{color:var(--fg)}
+    .nav-links .nl-portal{background:rgba(255,255,255,.1);color:rgba(255,255,255,.9)!important}
+    .nav-links .nl-portal::after{display:none}
+    .nav-links .nl-portal:hover{background:rgba(255,255,255,.2)!important;color:#fff!important}
+    .nav-solid .nav-links .nl-portal{background:var(--fg)!important;color:#fff!important}
+    .nav-solid .nav-links .nl-portal:hover{opacity:.85}
+    /* Utils row */
+    .nav-utils{display:flex;align-items:center;gap:4px;flex-shrink:0}
+    /* Search */
+    .nav-search{position:relative;display:flex;align-items:center}
+    .nav-search-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:none;border:none;color:rgba(255,255,255,.58);cursor:pointer;border-radius:8px;transition:color .25s,background .25s;flex-shrink:0}
+    .nav-search-btn:hover{color:rgba(255,255,255,.95);background:rgba(255,255,255,.1)}
+    .nav-solid .nav-search-btn{color:var(--fg3)}
+    .nav-solid .nav-search-btn:hover{color:var(--fg);background:var(--panel)}
+    .nav-search-panel{position:absolute;right:0;top:50%;transform:translateY(-50%);width:0;overflow:hidden;transition:width .35s cubic-bezier(.22,.68,0,1.2)}
+    .nav-search.ns-open .nav-search-panel{width:252px}
+    .nav-search-panel input{width:252px;padding:8px 12px 8px 36px;background:rgba(15,15,20,.5);border:1px solid rgba(255,255,255,.18);border-radius:9px;color:#fff;font-family:var(--font);font-size:13px;outline:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .25s,background .25s}
+    .nav-search-panel input::placeholder{color:rgba(255,255,255,.35)}
+    .nav-search-panel input:focus{border-color:rgba(255,255,255,.4);background:rgba(15,15,20,.65)}
+    .nav-solid .nav-search-panel input{background:var(--panel);border-color:var(--line);color:var(--fg)}
+    .nav-solid .nav-search-panel input::placeholder{color:var(--fg3)}
+    .nav-solid .nav-search-panel input:focus{border-color:var(--signal);background:#fff}
+    .nav-search-ico{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.35);pointer-events:none;z-index:1;transition:color .25s}
+    .nav-solid .nav-search-ico{color:var(--fg3)}
+    .n-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:320px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,.15);max-height:320px;overflow-y:auto;z-index:201}
+    .n-search-drop a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--fg);border-bottom:1px solid var(--line);transition:background .2s;text-decoration:none}
+    .n-search-drop a:last-child{border-bottom:none}
     .n-search-drop a:hover{background:var(--panel)}
-    .n-search-drop img{width:36px;height:36px;object-fit:contain;border-radius:4px;background:var(--panel)}
-    .n-search-drop mark{background:rgba(43,111,255,.15);color:var(--signal);border-radius:2px}
-    .n-lang{background:transparent;border:1px solid var(--line);border-radius:5px;padding:5px 6px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--fg2);cursor:pointer;outline:none}
-    .n-cart{position:relative;background:none;border:none;color:var(--fg);cursor:pointer;padding:4px}
-    .n-cart-count{position:absolute;top:-4px;right:-6px;background:var(--deal);color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
-    .n-cart-drop{position:absolute;top:52px;right:16px;width:300px;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.12);z-index:101;overflow:hidden}
+    .n-search-drop img{width:36px;height:36px;object-fit:contain;border-radius:4px;background:var(--panel);flex-shrink:0}
+    .n-search-drop mark{background:rgba(43,111,255,.14);color:var(--signal);border-radius:2px;padding:0 2px}
+    /* Lang */
+    .nav-lang{appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:6px 10px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.62);cursor:pointer;outline:none;transition:background .25s,border-color .25s,color .25s}
+    .nav-lang:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+    .nav-solid .nav-lang{background:var(--panel);border-color:var(--line);color:var(--fg2)}
+    .nav-solid .nav-lang:hover{border-color:var(--line-hi)}
+    /* Cart */
+    .nav-cart{position:relative;display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:none;border:none;color:rgba(255,255,255,.62);cursor:pointer;border-radius:8px;transition:color .25s,background .25s}
+    .nav-cart:hover{color:rgba(255,255,255,.95);background:rgba(255,255,255,.1)}
+    .nav-solid .nav-cart{color:var(--fg3)}
+    .nav-solid .nav-cart:hover{color:var(--fg);background:var(--panel)}
+    .nav-cart-badge{position:absolute;top:-2px;right:-5px;background:var(--deal);color:#fff;font-size:9px;font-weight:700;min-width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);padding:0 3px;line-height:1;border:1.5px solid transparent}
+    .nav-solid .nav-cart-badge{border-color:var(--ink)}
+    .n-cart-drop{position:absolute;top:66px;right:16px;width:300px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.14);z-index:201;overflow:hidden}
+    /* WhatsApp */
+    .nav-wa{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.28);border-radius:8px;color:#2ecc71;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s;white-space:nowrap;text-decoration:none;font-weight:500}
+    .nav-wa svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
+    .nav-wa:hover{background:var(--wa);color:#052b14;border-color:var(--wa)}
+    .nav-solid .nav-wa{color:var(--wa-ink);background:rgba(37,211,102,.07);border-color:rgba(37,211,102,.22)}
+    .nav-solid .nav-wa:hover{background:var(--wa);color:#052b14;border-color:var(--wa)}
+    /* Hamburger */
+    .nav-ham{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:34px;height:34px;background:none;border:1px solid rgba(255,255,255,.2);border-radius:8px;cursor:pointer;padding:0;flex-shrink:0;transition:border-color .25s}
+    .nav-solid .nav-ham{border-color:var(--line)}
+    .nav-ham-bar{display:block;width:16px;height:1.5px;background:rgba(255,255,255,.78);border-radius:1px;transition:transform .32s cubic-bezier(.22,.68,0,1.2),opacity .22s,background .25s}
+    .nav-solid .nav-ham-bar{background:var(--fg)}
+    .nav.open .nav-ham-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .nav.open .nav-ham-bar:nth-child(2){opacity:0;transform:scaleX(0)}
+    .nav.open .nav-ham-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    /* Mobile drawer */
+    @media(max-width:960px){
+      .nav-links{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:0;background:rgba(9,10,14,.96);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:6px 0 14px}
+      .nav.open .nav-links{display:flex}
+      .nav-links a{padding:13px 28px;border-radius:0;color:rgba(255,255,255,.68);font-size:13px;letter-spacing:.06em}
+      .nav-links a::after{bottom:8px;left:28px;right:28px}
+      .nav-links a:hover,.nav-links a.nl-active{color:#fff;background:rgba(255,255,255,.05)}
+      .nav-links .nl-portal{margin:6px 20px 2px;border-radius:8px;text-align:center;background:rgba(255,255,255,.1)!important;color:rgba(255,255,255,.9)!important}
+      .nav-solid .nav-links .nl-portal{background:rgba(255,255,255,.15)!important}
+      .nav-ham{display:flex}
+      .nav-search{display:none}
+      .nav-lang{display:none}
+    }
 
     /* ── shared eyebrow / kinetic label ── */
     .eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--signal);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
@@ -307,9 +360,6 @@
     }
 
     @media(max-width:900px){
-      .n-links{display:none}.n-ham{display:block}.n-search{display:none}.n-lang{display:none}
-      .nav.open .n-links{display:flex;flex-direction:column;gap:0;position:absolute;top:52px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-      .nav.open .n-links a{padding:16px 24px;border:none;border-top:1px solid var(--line);font-size:13px}
       .grid-2{grid-template-columns:1fr}
       .g-panel{border-right:none}
       .pg{grid-template-columns:repeat(2,1fr)}
@@ -371,26 +421,56 @@
 <div class="grain"></div>
 
 <!-- NAV -->
-<nav class="nav">
-  <div class="nav-in">
-    <a class="n-logo" href="#" onclick="go('home')" aria-label="ADS Tech — home">
-      <span class="brandmark">ADS<span>TECH</span></span>
+<nav class="nav" id="main-nav">
+  <div class="nav-wrap">
+
+    <!-- Logo -->
+    <a class="nav-logo" href="#" onclick="go('home')" aria-label="ADS Tech — home">
+      <span class="nav-logo-a">ADS</span><span class="nav-logo-b">TECH</span>
     </a>
-    <div class="n-links">
-      <a href="#" onclick="go('home')">Home</a>
-      <a href="#" onclick="go('shop')" class="n-shop-btn">Shop Hardware</a>
-      <a href="#" onclick="go('corp')" class="n-corp-btn">Corporate Solutions</a>
-      <a href="portal.html" class="n-portal-btn">Client Portal</a>
-      <a href="#" onclick="go('repair')" class="n-repair-btn">Repair</a>
-      <a href="#" onclick="go('contact')">Contact</a>
+
+    <!-- Centre links -->
+    <div class="nav-links" id="nav-links">
+      <a href="#" onclick="go('home')" class="nl-active" id="nl-home">Home</a>
+      <a href="#" onclick="go('shop')" id="nl-shop">Shop Hardware</a>
+      <a href="#" onclick="go('corp')" id="nl-corp">Corporate</a>
+      <a href="portal.html" class="nl-portal">Client Portal</a>
+      <a href="#" onclick="go('repair')" id="nl-repair">Repair</a>
+      <a href="#" onclick="go('contact')" id="nl-contact">Contact</a>
     </div>
-    <div class="n-search">
-      <input type="search" id="global-search" placeholder="Search products, services..." autocomplete="off" aria-label="Search">
-      <div id="search-results" class="n-search-drop" hidden></div>
-    </div>
-    <div class="n-right">
-      <select id="lang-selector" class="n-lang" aria-label="Language"><option value="en" selected>EN</option><option value="es">ES</option><option value="fr">FR</option></select>
-      <button class="n-cart" id="cart-toggle" aria-label="Shopping cart" onclick="document.getElementById('mini-cart').hidden=!document.getElementById('mini-cart').hidden"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="n-cart-count" id="cart-count">0</span></button>
+
+    <!-- Right utilities -->
+    <div class="nav-utils">
+
+      <!-- Search (icon → expand) -->
+      <div class="nav-search" id="nav-search">
+        <button class="nav-search-btn" id="nav-search-btn" aria-label="Search" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <div class="nav-search-panel" id="nav-search-panel">
+          <svg class="nav-search-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" id="global-search" placeholder="Search hardware, models…" autocomplete="off" aria-label="Search products">
+          <div id="search-results" class="n-search-drop" hidden></div>
+        </div>
+      </div>
+
+      <!-- Language -->
+      <select id="lang-selector" class="nav-lang" aria-label="Language">
+        <option value="en" selected>EN</option>
+        <option value="es">ES</option>
+        <option value="fr">FR</option>
+      </select>
+
+      <!-- Cart -->
+      <button class="nav-cart" id="cart-toggle" aria-label="Shopping cart" type="button"
+        onclick="document.getElementById('mini-cart').hidden=!document.getElementById('mini-cart').hidden">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="nav-cart-badge" id="cart-count">0</span>
+      </button>
       <div id="mini-cart" class="n-cart-drop" hidden>
         <div id="mini-cart-items" style="padding:12px;font-size:13px;color:var(--fg3);">Cart is empty</div>
         <div style="padding:8px 12px 12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">
@@ -398,8 +478,21 @@
           <a href="#" onclick="go('shop')" class="cta-pill cta-fill" style="padding:8px 16px;font-size:11px;">Checkout</a>
         </div>
       </div>
-      <a href="https://wa.me/9613839983" target="_blank" rel="noopener" class="n-wa">WhatsApp</a>
-      <button class="n-ham" onclick="document.querySelector('.nav').classList.toggle('open')">Menu</button>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/9613839983" target="_blank" rel="noopener" class="nav-wa">
+        <svg viewBox="0 0 24 24" width="13" height="13"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.848L.057 23.428a.5.5 0 0 0 .614.614l5.567-1.462A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.796 9.796 0 0 1-5.003-1.373l-.358-.213-3.717.977.995-3.625-.234-.373A9.796 9.796 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        WhatsApp
+      </a>
+
+      <!-- Hamburger -->
+      <button class="nav-ham" id="nav-ham" aria-label="Toggle menu" type="button"
+        onclick="document.querySelector('.nav').classList.toggle('open')">
+        <span class="nav-ham-bar"></span>
+        <span class="nav-ham-bar"></span>
+        <span class="nav-ham-bar"></span>
+      </button>
+
     </div>
   </div>
 </nav>
@@ -1661,6 +1754,44 @@ function jvHandoff(){var s=jvSynth();var wa='https://wa.me/'+WA+'?text='+encodeU
 <script>
 /* ════ PRODUCT DETAIL MODAL ════ */
 if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+/* ── Nav: scroll glass transition ── */
+(function(){
+  var nav = document.getElementById('main-nav');
+  if(!nav) return;
+  function tick(){ nav.classList.toggle('nav-solid', window.scrollY > 48); }
+  window.addEventListener('scroll', tick, {passive:true});
+  tick();
+})();
+
+/* ── Nav: search expand/collapse ── */
+(function(){
+  var ns  = document.getElementById('nav-search');
+  var btn = document.getElementById('nav-search-btn');
+  var inp = document.getElementById('global-search');
+  if(!ns||!btn) return;
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var opening = !ns.classList.contains('ns-open');
+    ns.classList.toggle('ns-open', opening);
+    if(opening) setTimeout(function(){ inp && inp.focus(); }, 320);
+  });
+  document.addEventListener('click', function(e){
+    if(!ns.contains(e.target)) ns.classList.remove('ns-open');
+  });
+})();
+
+/* ── Nav: active link tracking ── */
+(function(){
+  var map = {home:'nl-home',shop:'nl-shop',corp:'nl-corp',repair:'nl-repair',contact:'nl-contact'};
+  var _go = window.go;
+  window.go = function(id, anchor){
+    document.querySelectorAll('.nav-links a').forEach(function(a){ a.classList.remove('nl-active'); });
+    var lid = map[id];
+    if(lid){ var el = document.getElementById(lid); if(el) el.classList.add('nl-active'); }
+    if(_go) _go(id, anchor);
+  };
+})();
 if(location.hash === '#product') history.replaceState(null, '', location.pathname + location.search);
 
 var GM_GALLERY = {
