@@ -1,6 +1,6 @@
 /* ADS Tech service worker — conservative caching.
  * Images & fonts: cache-first. Pages: network-first with offline fallback. */
-var VERSION = "ads-v1";
+var VERSION = "ads-v2";
 var IMG_CACHE = VERSION + "-img";
 var PAGE_CACHE = VERSION + "-page";
 
